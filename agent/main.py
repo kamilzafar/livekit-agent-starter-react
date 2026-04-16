@@ -52,6 +52,11 @@ async def entrypoint(ctx: JobContext) -> None:
         tts=elevenlabs.TTS(voice_id="21m00Tcm4TlvDq8ikWAM"),
         vad=ctx.proc.userdata["vad"],
         turn_handling=TurnHandlingOptions(
+            turn_detection="stt",
+            endpointing={
+                "min_delay": 1.0,
+                "max_delay": 5.0,
+            },
             interruption={
                 "mode": "vad",
                 "resume_false_interruption": True,
