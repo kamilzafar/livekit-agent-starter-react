@@ -47,7 +47,7 @@ server.setup_fnc = prewarm
 @server.rtc_session()
 async def entrypoint(ctx: JobContext) -> None:
     session = AgentSession(
-        stt=groq.STT(model="whisper-large-v3", language="multi"),
+        stt=groq.STT(model="whisper-large-v3"),
         llm=openai.LLM(model="gpt-4o"),
         tts=elevenlabs.TTS(voice_id="21m00Tcm4TlvDq8ikWAM"),
         vad=ctx.proc.userdata["vad"],
