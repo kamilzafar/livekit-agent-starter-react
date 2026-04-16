@@ -11,7 +11,7 @@ from livekit.agents import (
     TurnHandlingOptions,
     cli,
 )
-from livekit.plugins import elevenlabs, openai, silero, speechmatics
+from livekit.plugins import deepgram, elevenlabs, openai, silero
 
 logger = logging.getLogger("local-agent")
 
@@ -47,7 +47,7 @@ server.setup_fnc = prewarm
 @server.rtc_session()
 async def entrypoint(ctx: JobContext) -> None:
     session = AgentSession(
-        stt=speechmatics.STT(),
+        stt=deepgram.STT(model="nova-3", language="multi"),
         llm=openai.LLM(model="gpt-4o"),
         tts=elevenlabs.TTS(voice_id="21m00Tcm4TlvDq8ikWAM"),
         vad=ctx.proc.userdata["vad"],
