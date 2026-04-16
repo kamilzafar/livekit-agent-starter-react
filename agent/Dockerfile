@@ -12,4 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY main.py .
 
+# Download model files (turn detector, silero VAD)
+RUN python main.py download-files
+
 CMD ["python", "main.py", "dev"]

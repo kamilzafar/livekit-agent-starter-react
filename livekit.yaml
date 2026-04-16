@@ -4,6 +4,6 @@ rtc:
   port_range_end: 7881
   use_external_ip: false
 keys:
-  devkey: devsecret
+  devkey: secret_that_is_at_least_32_characters_long
 logging:
   level: info

@@ -20,13 +20,12 @@ services:
     depends_on:
       livekit-server:
         condition: service_healthy
+    env_file:
+      - .env.agent
     environment:
       LIVEKIT_URL: ws://livekit-server:7880
-      LIVEKIT_API_KEY: ${LIVEKIT_API_KEY:-devkey}
-      LIVEKIT_API_SECRET: ${LIVEKIT_API_SECRET:-devsecret}
-      OPENAI_API_KEY: ${OPENAI_API_KEY}
-      SPEECHMATICS_API_KEY: ${SPEECHMATICS_API_KEY}
-      ELEVEN_API_KEY: ${ELEVEN_API_KEY}
+      LIVEKIT_API_KEY: devkey
+      LIVEKIT_API_SECRET: secret_that_is_at_least_32_characters_long
     volumes:
       - ./agent:/app
     restart: unless-stopped
