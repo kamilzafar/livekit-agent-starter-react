@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.claude/
+docs/
+
+# Python agent
+agent/__pycache__/
+agent/*.egg-info/
