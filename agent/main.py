@@ -48,7 +48,7 @@ server.setup_fnc = prewarm
 async def entrypoint(ctx: JobContext) -> None:
     session = AgentSession(
         stt=groq.STT(model="whisper-large-v3", detect_language=True),
-        llm=groq.LLM(model="qwen3-32b"),
+        llm=groq.LLM(model="qwen/qwen3-32b"),
         tts=elevenlabs.TTS(voice_id="21m00Tcm4TlvDq8ikWAM"),
         vad=ctx.proc.userdata["vad"],
         turn_handling=TurnHandlingOptions(
