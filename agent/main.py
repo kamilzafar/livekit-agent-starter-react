@@ -8,6 +8,7 @@ from livekit.agents import (
     AgentSession,
     JobContext,
     JobProcess,
+    TurnHandlingOptions,
     cli,
 )
 from livekit.plugins import elevenlabs, openai, silero, speechmatics
@@ -50,6 +51,12 @@ async def entrypoint(ctx: JobContext) -> None:
         llm=openai.LLM(model="gpt-4o"),
         tts=elevenlabs.TTS(voice_id="21m00Tcm4TlvDq8ikWAM"),
         vad=ctx.proc.userdata["vad"],
+        turn_handling=TurnHandlingOptions(
+            interruption={
+                "mode": "vad",
+                "resume_false_interruption": True,
+            },
+        ),
     )
 
     await session.start(
